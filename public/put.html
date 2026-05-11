@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PUT presigned URL — S3 upload demo</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <p><a href="/">&larr; back</a></p>
+    <h1>PUT presigned URL</h1>
+    <p class="info" id="mode-info">Loading mode...</p>
+    <p>The server issues one signed URL per file. Each URL points at an exact key. Browser uploads with <code>PUT</code>.</p>
+    <p style="font-size:0.9em; color:#555;">PUT presigned URLs do <strong>not</strong> let the bucket enforce size or content-type rules at upload time — what's signed is whatever the frontend declared at presign time. <a href="/post">Try the POST policy demo</a> to see server-side enforcement in action.</p>
+
+    <div id="dropzone" class="dropzone">
+      <p>Drag &amp; drop files here, or <label class="filepicker">click to choose<input type="file" multiple hidden /></label></p>
+    </div>
+
+    <ul id="filelist" class="filelist"></ul>
+
+    <h2>Uploaded</h2>
+    <ul id="uploaded" class="uploaded"></ul>
+
+    <details>
+      <summary>What the backend returns (last presign response)</summary>
+      <pre id="raw"></pre>
+    </details>
+  </main>
+  <script type="module" src="/client.js"></script>
+  <script type="module">
+    import { startDemo } from '/client.js';
+    startDemo('PUT');
+  </script>
+</body>
+</html>

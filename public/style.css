@@ -1,0 +1,103 @@
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  color: #222;
+  line-height: 1.5;
+}
+h1 { margin-bottom: 0.25rem; }
+h2 { margin-top: 2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+a { color: #0366d6; }
+code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 0.9em; }
+pre {
+  background: #fafafa;
+  border: 1px solid #e1e4e8;
+  padding: 0.75rem;
+  border-radius: 4px;
+  overflow: auto;
+  font-size: 0.8rem;
+  max-height: 320px;
+}
+.info {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+.modes { list-style: none; padding: 0; }
+.modes li {
+  border: 1px solid #d0d7de;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+.modes li span { color: #555; font-size: 0.92rem; }
+
+.dropzone {
+  border: 2px dashed #c0c0c0;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  background: #fafbfc;
+  transition: background 0.15s, border-color 0.15s;
+}
+.dropzone.dragging {
+  border-color: #0366d6;
+  background: #f0f7ff;
+}
+.filepicker {
+  color: #0366d6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.filelist, .uploaded { list-style: none; padding: 0; margin: 1rem 0; }
+.filelist li, .uploaded li {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.92rem;
+}
+.filelist .name {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.filelist .name strong { font-weight: 600; }
+.filelist .meta { color: #6a737d; font-size: 0.82rem; }
+.filelist .status { font-size: 0.82rem; }
+.filelist .status.error { color: #d73a49; }
+.filelist .status.done { color: #22863a; }
+
+.progress {
+  height: 6px;
+  background: #eaecef;
+  border-radius: 3px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #0366d6;
+  transition: width 0.15s linear;
+}
+.progress.done > span { background: #22863a; }
+.progress.error > span { background: #d73a49; }
+
+.uploaded li {
+  background: #f6ffed;
+  border-color: #b7eb8f;
+}
+.uploaded .key { font-family: monospace; font-size: 0.85rem; word-break: break-all; }
+.uploaded .meta { color: #555; font-size: 0.8rem; }
+
+details { margin-top: 2rem; }
+details summary { cursor: pointer; color: #586069; font-size: 0.9rem; }

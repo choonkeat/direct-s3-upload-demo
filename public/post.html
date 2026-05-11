@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>POST policy — S3 upload demo</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <p><a href="/">&larr; back</a></p>
+    <h1>POST policy</h1>
+    <p class="info" id="mode-info">Loading mode...</p>
+    <p>The server issues a signed policy describing the allowed upload (size range, content type, key prefix). Browser submits a multipart form to the bucket.</p>
+    <p class="info" id="constraints">Loading active policy constraints...</p>
+    <p style="font-size:0.9em; color:#555;">Try uploading something <strong>larger than the size limit</strong> or with the <strong>wrong content type</strong> — the bucket will reject it server-side based on the signed policy, even though the upload went straight from browser to bucket.</p>
+
+    <div id="dropzone" class="dropzone">
+      <p>Drag &amp; drop files here, or <label class="filepicker">click to choose<input type="file" multiple hidden /></label></p>
+    </div>
+
+    <ul id="filelist" class="filelist"></ul>
+
+    <h2>Uploaded</h2>
+    <ul id="uploaded" class="uploaded"></ul>
+
+    <details>
+      <summary>What the backend returns (last presign response)</summary>
+      <pre id="raw"></pre>
+    </details>
+  </main>
+  <script type="module">
+    import { startDemo } from '/client.js';
+    startDemo('POST');
+  </script>
+</body>
+</html>

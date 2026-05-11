@@ -1,0 +1,28 @@
+{
+  "name": "s3-fileupload",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:client": "esbuild client/client.ts --bundle --outfile=public/client.js --format=esm --target=es2022 --sourcemap",
+    "watch:client": "esbuild client/client.ts --bundle --outfile=public/client.js --format=esm --target=es2022 --sourcemap --watch",
+    "dev:server": "tsx watch server.ts",
+    "dev": "concurrently -k -n client,server -c blue,green \"npm:watch:client\" \"npm:dev:server\"",
+    "start": "npm run build:client && tsx server.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.654.0",
+    "@aws-sdk/s3-presigned-post": "^3.654.0",
+    "@aws-sdk/s3-request-presigner": "^3.654.0",
+    "busboy": "^1.6.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/busboy": "^1.5.4",
+    "@types/node": "^22.5.5",
+    "concurrently": "^9.0.1",
+    "esbuild": "^0.28.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}

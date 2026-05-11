@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S3 Direct Upload Demos</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <h1>S3 Direct Upload Demos</h1>
+    <p>Two ways to let a browser upload files directly to S3 (or a mock bucket).</p>
+    <ul class="modes">
+      <li><a href="/put"><strong>PUT presigned URL</strong></a><br /><span>One signed URL per file. Backend dictates the exact key. Supports multipart for large files.</span></li>
+      <li><a href="/post"><strong>POST policy</strong></a><br /><span>Signed contract describing allowed conditions (size range, content type, key prefix). Browser submits a multipart form.</span></li>
+    </ul>
+    <p class="info" id="mode-info">Loading mode...</p>
+  </main>
+  <script type="module">
+    fetch('/api/config').then(r => r.json()).then(c => {
+      document.getElementById('mode-info').textContent =
+        `Server mode: ${c.mode.toUpperCase()} — bucket=${c.bucket} region=${c.region} max=${(c.maxUploadBytes/1024/1024).toFixed(1)}MB prefix=${c.keyPrefix} ctype=${c.allowedContentTypePrefix ?? '(any)'}`;
+    });
+  </script>
+</body>
+</html>
